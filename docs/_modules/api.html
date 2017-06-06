@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>api &#8212; google_streetview 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for api</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">google_streetview</span> <span class="k">import</span> <span class="n">helpers</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">makedirs</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlencode</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<div class="viewcode-block" id="results"><a class="viewcode-back" href="../index.html#api.results">[docs]</a><span class="k">class</span> <span class="nc">results</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;Google Street View Image API results.</span>
+<span class="sd">  </span>
+<span class="sd">  Uses the `Google Street View Image API &lt;https://developers.google.com/maps/documentation/streetview/&gt;`_ </span>
+<span class="sd">  to search for street level imagery.</span>
+<span class="sd">  </span>
+<span class="sd">  Args:</span>
+<span class="sd">    params (listof dict):</span>
+<span class="sd">      List of dict containing batch `street view URL parameters &lt;https://developers.google.com/maps/documentation/streetview/intro&gt;`_.</span>
+<span class="sd">    site_api(str):</span>
+<span class="sd">      The site for the URL request (example: https://maps.googleapis.com/maps/api/streetview).</span>
+<span class="sd">    site_metadata(str):</span>
+<span class="sd">      The site for the URL `metadata &lt;https://developers.google.com/maps/documentation/streetview/metadata&gt;`_ request (example: https://maps.googleapis.com/maps/api/streetview/metadata).</span>
+<span class="sd">  </span>
+<span class="sd">  Attributes:</span>
+<span class="sd">    params (listof dict):</span>
+<span class="sd">      Same as argument ``params`` for reference of inputs.</span>
+<span class="sd">    links (listof str):</span>
+<span class="sd">      List of str containing street view URL requests.</span>
+<span class="sd">    metadata (listof dict):</span>
+<span class="sd">      Objects returned from `street view metadata request &lt;https://developers.google.com/maps/documentation/streetview/metadata&gt;`_.</span>
+<span class="sd">    metadata_links (listof str):</span>
+<span class="sd">      List of str containing street view URL metadata requests.</span>
+<span class="sd">  </span>
+<span class="sd">  Examples: </span>
+<span class="sd">    ::</span>
+<span class="sd">    </span>
+<span class="sd">      # Import google_streetview for the api module</span>
+<span class="sd">      import google_streetview.api</span>
+<span class="sd">      </span>
+<span class="sd">      # Define parameters for street view api</span>
+<span class="sd">      params = [{</span>
+<span class="sd">        &#39;size&#39;: &#39;600x300&#39;, # max 640x640 pixels</span>
+<span class="sd">        &#39;location&#39;: &#39;46.414382,10.013988&#39;,</span>
+<span class="sd">        &#39;heading&#39;: &#39;151.78&#39;,</span>
+<span class="sd">        &#39;pitch&#39;: &#39;-0.76&#39;,</span>
+<span class="sd">        &#39;key&#39;: &#39;your_dev_key&#39;</span>
+<span class="sd">      }]</span>
+<span class="sd">      </span>
+<span class="sd">      # Create a results object</span>
+<span class="sd">      results = google_streetview.api.results(params)</span>
+<span class="sd">      </span>
+<span class="sd">      # Preview results</span>
+<span class="sd">      results.preview()</span>
+<span class="sd">      </span>
+<span class="sd">      # Download images to directory &#39;downloads&#39;</span>
+<span class="sd">      results.download_links(&#39;downloads&#39;)</span>
+<span class="sd">      </span>
+<span class="sd">      # Save links</span>
+<span class="sd">      results.save_links(&#39;links.txt&#39;)</span>
+<span class="sd">      </span>
+<span class="sd">      # Save metadata</span>
+<span class="sd">      results.save_metadata(&#39;metadata.json&#39;)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">params</span><span class="p">,</span>
+    <span class="n">site_api</span><span class="o">=</span><span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview&#39;</span><span class="p">,</span>
+    <span class="n">site_metadata</span><span class="o">=</span><span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview/metadata&#39;</span><span class="p">):</span>
+    
+    <span class="c1"># (params) Set default params</span>
+    <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;640x640&#39;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
+      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+          <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+    
+    <span class="c1"># (image) Create image api links from parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">site_api</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+    
+    <span class="c1"># (metadata) Create metadata api links and data from parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">metadata_links</span> <span class="o">=</span> <span class="p">[</span><span class="n">site_metadata</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata_links</span><span class="p">]</span>
+      
+<div class="viewcode-block" id="results.download_links"><a class="viewcode-back" href="../index.html#api.results.download_links">[docs]</a>  <span class="k">def</span> <span class="nf">download_links</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dir_path</span><span class="p">,</span> <span class="n">metadata_file</span><span class="o">=</span><span class="s1">&#39;metadata.json&#39;</span><span class="p">,</span> <span class="n">metadata_status</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="n">status_ok</span><span class="o">=</span><span class="s1">&#39;OK&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Download Google Street View images from parameter queries if they are available.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">      dir_path (str):</span>
+<span class="sd">        Path of directory to save downloads of images from :class:`api.results`.links</span>
+<span class="sd">      metadata_file (str):</span>
+<span class="sd">         Name of the file with extension to save the :class:`api.results`.metadata</span>
+<span class="sd">      metadata_status (str):</span>
+<span class="sd">        Key name of the status value from :class:`api.results`.metadata response from the metadata API request.</span>
+<span class="sd">      status_ok (str):</span>
+<span class="sd">        Value from the metadata API response status indicating that an image is available.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
+      <span class="n">makedirs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+    
+    <span class="c1"># (download) Download images if status from metadata is ok</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">url</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">metadata_status</span><span class="p">]</span> <span class="o">==</span> <span class="n">status_ok</span><span class="p">:</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="s1">&#39;gsv_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.jpg&#39;</span><span class="p">)</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;_file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="c1"># add file reference</span>
+        <span class="n">helpers</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="c1"># (metadata) Save metadata with file reference</span>
+    <span class="n">metadata_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_path</span><span class="p">,</span> <span class="n">metadata_file</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+      <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">out_file</span><span class="p">)</span></div>
+  
+<div class="viewcode-block" id="results.preview"><a class="viewcode-back" href="../index.html#api.results.preview">[docs]</a>  <span class="k">def</span> <span class="nf">preview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;pano_id&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">],</span> <span class="n">kheader</span><span class="o">=</span><span class="s1">&#39;pano_id&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print a preview of the request results.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">      n (int):</span>
+<span class="sd">        Maximum number of requests to preview</span>
+<span class="sd">      k (str):</span>
+<span class="sd">        Keys in :class:`api.results`.metadata to preview</span>
+<span class="sd">      kheader (str):</span>
+<span class="sd">        Key in :class:`api.results`.metadata[``k``] to use as the header</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span>
+  
+    <span class="c1"># (cse_print) Print results</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kv</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">[:</span><span class="n">n</span><span class="p">]):</span>
+      
+      <span class="c1"># (print_header) Print result header</span>
+      <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;] &#39;</span> <span class="o">+</span> <span class="n">kv</span><span class="p">[</span><span class="n">kheader</span><span class="p">]</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">))</span>
+        
+      <span class="c1"># (print_metadata) Print result metadata</span>
+      <span class="k">for</span> <span class="n">ki</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ki</span> <span class="ow">in</span> <span class="n">kv</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">ki</span> <span class="o">==</span> <span class="s1">&#39;location&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">ki</span> <span class="o">+</span> <span class="s1">&#39;: </span><span class="se">\n</span><span class="s1">  lat: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kv</span><span class="p">[</span><span class="n">ki</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  lng: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kv</span><span class="p">[</span><span class="n">ki</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">]))</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">ki</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kv</span><span class="p">[</span><span class="n">ki</span><span class="p">]))</span></div>
+      
+<div class="viewcode-block" id="results.save_links"><a class="viewcode-back" href="../index.html#api.results.save_links">[docs]</a>  <span class="k">def</span> <span class="nf">save_links</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Saves a text file of the search result links.</span>
+<span class="sd">    </span>
+<span class="sd">    Saves a text file of the search result links, where each link </span>
+<span class="sd">    is saved in a new line. An example is provided below::</span>
+<span class="sd">      </span>
+<span class="sd">      https://maps.googleapis.com/maps/api/streetview?size=600x300&amp;location=46.414382,10.013988&amp;heading=151.78&amp;pitch=-0.76&amp;key=yourdevkey</span>
+<span class="sd">      https://maps.googleapis.com/maps/api/streetview?size=600x300&amp;location=41.403609,2.174448&amp;heading=100&amp;pitch=28&amp;scale=2&amp;key=yourdevkey</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">      file_path (str):</span>
+<span class="sd">        Path to the text file to save links to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+      <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+  
+<div class="viewcode-block" id="results.save_metadata"><a class="viewcode-back" href="../index.html#api.results.save_metadata">[docs]</a>  <span class="k">def</span> <span class="nf">save_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save Google Street View metadata from parameter queries.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">      file_path (str):</span>
+<span class="sd">        Path of the file with extension to save the :class:`api.results`.metadata</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+      <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="n">out_file</span><span class="p">)</span></div></div>
+      
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Richard Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

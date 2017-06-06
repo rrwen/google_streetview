@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>google_streetview &#8212; google_streetview 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">google_streetview 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="google-streetview">
+<h1>google_streetview<a class="headerlink" href="#google-streetview" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="line-block">
+<div class="line">Richard Wen</div>
+<div class="line"><a class="reference external" href="mailto:rrwen&#46;dev&#37;&#52;&#48;gmail&#46;com">rrwen<span>&#46;</span>dev<span>&#64;</span>gmail<span>&#46;</span>com</a></div>
+</div>
+<p>A command line tool and module for Google Street View Image API.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">h</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span>
+</pre></div>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install <a class="reference external" href="https://www.python.org/downloads/">Python</a></li>
+<li>Install <a class="reference external" href="https://pypi.python.org/pypi/search-google">google_streetview</a> via <code class="docutils literal"><span class="pre">pip</span></code></li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">google_streetview</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A <a class="reference external" href="https://developers.google.com/api-client-library/python/auth/api-keys">Google API developer key</a> is required to use this package</li>
+<li>A <a class="reference external" href="https://www.google.com/gmail">Gmail</a> account will also be required to create and access the developer key</li>
+<li>When asked to sign in, use your Gmail account for access</li>
+</ul>
+<p><em>Note: Instructions and links were written on June 06, 2017, and are subject to change depending on Google&#8217;s website and API.</em></p>
+<div class="section" id="google-api">
+<h3>Google API<a class="headerlink" href="#google-api" title="Permalink to this headline">¶</a></h3>
+<p>An <a class="reference external" href="https://developers.google.com/api-client-library/python/auth/api-keys">API developer key</a> for the <a class="reference external" href="https://developers.google.com/api-client-library/python/">Google Application Programming Interface (API)</a> can be setup with the following instructions:</p>
+<ol class="arabic simple">
+<li>Enable <a class="reference external" href="https://console.developers.google.com/apis/api/customsearch.googleapis.com">Google Custom Search Engine</a></li>
+<li>Go to <a class="reference external" href="https://console.developers.google.com/apis/credentials">Google API Console Credentials</a></li>
+<li>Click <strong>Create Credentials -&gt; API Key</strong></li>
+<li>Set <code class="docutils literal"><span class="pre">key</span></code> by replacing &#8220;your_dev_key&#8221; with the <strong>API Key</strong></li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;your_dev_key&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>For help in the console, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>Please ensure that the <a class="reference internal" href="#setup">Setup</a> section was completed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;your_dev_key&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="image-search">
+<h3>Image Search<a class="headerlink" href="#image-search" title="Permalink to this headline">¶</a></h3>
+<p>Set developer key arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dev_key&quot;</span>
+</pre></div>
+</div>
+<p>Get street view image using the location argument <code class="docutils literal"><span class="pre">--location</span></code> and providing <code class="docutils literal"><span class="pre">&lt;latitude&gt;,&lt;longitude&gt;</span></code> values:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span>
+</pre></div>
+</div>
+<p>Get street view image using the panorama id argument <code class="docutils literal"><span class="pre">--pano</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span>
+</pre></div>
+</div>
+<p>Multiple locations and panorama ids can be given by separating with <code class="docutils literal"><span class="pre">;</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span><span class="p">;</span><span class="n">A1v2IdX_6HKnIQa2SPyyAg</span>
+</pre></div>
+</div>
+<p>Adjust size of the images up to 640 by 640 pixels with the <code class="docutils literal"><span class="pre">--size</span></code> argument and providing <code class="docutils literal"><span class="pre">&lt;width&gt;x&lt;height&gt;</span></code> values (the default is <code class="docutils literal"><span class="pre">640x640</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">600</span><span class="n">x400</span>
+</pre></div>
+</div>
+<p>Adjust the heading of the camera with the <code class="docutils literal"><span class="pre">--heading</span></code> argument, where 0 and 360 are north, 90 is east, 180 is south, and 270 is west:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">180</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">270</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">360</span>
+</pre></div>
+</div>
+<p>Adjust the image&#8217;s horizontal field of view with the <code class="docutils literal"><span class="pre">--fov</span></code> argument, which represents zoom values of up to 120 (the default is <code class="docutils literal"><span class="pre">90</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">120</span>
+</pre></div>
+</div>
+<p>Adjust the camera&#8217;s up and down angle with the <code class="docutils literal"><span class="pre">--pitch</span></code> argument, where positive values up to 90 degrees indicate straight up and negative values down to -90 indicate straight down (the default is <code class="docutils literal"><span class="pre">0</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=-</span><span class="mi">90</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="save-results">
+<h3>Save Results<a class="headerlink" href="#save-results" title="Permalink to this headline">¶</a></h3>
+<p>Download street view images to &#8220;downloads&#8221; folder with the <code class="docutils literal"><span class="pre">--save_downloads</span></code> argument:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_downloads</span><span class="o">=</span><span class="n">downloads</span>
+</pre></div>
+</div>
+<p>Save metadata:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Save URL links:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_links</span><span class="o">=</span><span class="n">links</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRdd</span> <span class="o">--</span><span class="n">save_links</span><span class="o">=</span><span class="n">links</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Save links and metadata:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_links</span><span class="o">=</span><span class="n">links</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRdd</span> <span class="o">--</span><span class="n">save_links</span><span class="o">=</span><span class="n">links</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-arguments">
+<h3>Default Arguments<a class="headerlink" href="#default-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Default arguments persist even after the console is closed. Defaults enable user customization of the google_streetview command without a long list of arguments every call.</p>
+<p>View the defaults:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>Increase number of results previewed to <code class="docutils literal"><span class="pre">20</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">option_preview</span><span class="o">=</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>Turn off preview of results:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">option_silent</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<p>Set the <code class="docutils literal"><span class="pre">fov</span></code> argument to default to <code class="docutils literal"><span class="pre">45</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">fov</span><span class="o">=</span><span class="mi">45</span>
+</pre></div>
+</div>
+<p>Set the <code class="docutils literal"><span class="pre">heading</span></code> argument to default to <code class="docutils literal"><span class="pre">0</span></code> images:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">heading</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>Set to save a text file named <code class="docutils literal"><span class="pre">links.txt</span></code> with result links whenever used:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">save_links</span><span class="o">=</span><span class="n">links</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Remove default arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">search_result</span> <span class="o">-</span><span class="n">r</span> <span class="n">option_preview</span>
+<span class="n">google_streetview</span> <span class="o">-</span><span class="n">r</span> <span class="n">option_silent</span>
+<span class="n">google_streetview</span> <span class="o">-</span><span class="n">r</span> <span class="n">fov</span>
+<span class="n">google_streetview</span> <span class="o">-</span><span class="n">r</span> <span class="n">heading</span>
+<span class="n">google_streetview</span> <span class="o">-</span><span class="n">r</span> <span class="n">save_links</span>
+</pre></div>
+</div>
+<p>Reset the defaults:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>After resetting defaults, the developer key will have to be set again:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;your_dev_key&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-arguments">
+<h3>Additional Arguments<a class="headerlink" href="#additional-arguments" title="Permalink to this headline">¶</a></h3>
+<p>A number of optional arguments defined using <code class="docutils literal"><span class="pre">--</span></code> are not shown when using <code class="docutils literal"><span class="pre">google_streetview</span> <span class="pre">-h</span></code>. These can be used with the same names as the paramters passed to <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/intro">Google&#8217;s Street View Image API</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>For example, the digital signature for billing can be set by argument <code class="docutils literal"><span class="pre">signature</span></code> which is a named argument in <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/intro">Google&#8217;s Street View Image API</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="n">cat</span> <span class="o">--</span><span class="n">signature</span><span class="o">=</span><span class="s2">&quot;your_signature&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-import">
+<h3>Module Import<a class="headerlink" href="#module-import" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://pypi.python.org/pypi/search-google">google_streetview</a> package may also be used as a <a class="reference external" href="https://docs.python.org/2/tutorial/modules.html">Python module</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Import google_streetview for the api module</span>
+<span class="kn">import</span> <span class="nn">google_streetview.api</span>
+
+<span class="c1"># Define parameters for street view api</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[{</span>
+  <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;600x300&#39;</span><span class="p">,</span> <span class="c1"># max 640x640 pixels</span>
+  <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;46.414382,10.013988&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;heading&#39;</span><span class="p">:</span> <span class="s1">&#39;151.78&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="s1">&#39;-0.76&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;your_dev_key&#39;</span>
+<span class="p">}]</span>
+
+<span class="c1"># Create a results object</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Download images to directory &#39;downloads&#39;</span>
+<span class="n">results</span><span class="o">.</span><span class="n">download_urls</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For more details on module usage, see the example in <a class="reference internal" href="#api">api</a>.</p>
+</div>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-api">
+<span id="api"></span><h3>api<a class="headerlink" href="#module-api" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="api.results">
+<em class="property">class </em><code class="descclassname">api.</code><code class="descname">results</code><span class="sig-paren">(</span><em>params</em>, <em>site_api='https://maps.googleapis.com/maps/api/streetview'</em>, <em>site_metadata='https://maps.googleapis.com/maps/api/streetview/metadata'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api.html#results"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#api.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Google Street View Image API results.</p>
+<p>Uses the <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/">Google Street View Image API</a> 
+to search for street level imagery.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>params (listof dict):</dt>
+<dd>List of dict containing batch <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/intro">street view URL parameters</a>.</dd>
+<dt>site_api(str):</dt>
+<dd>The site for the URL request (example: <a class="reference external" href="https://maps.googleapis.com/maps/api/streetview">https://maps.googleapis.com/maps/api/streetview</a>).</dd>
+<dt>site_metadata(str):</dt>
+<dd>The site for the URL <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/metadata">metadata</a> request (example: <a class="reference external" href="https://maps.googleapis.com/maps/api/streetview/metadata">https://maps.googleapis.com/maps/api/streetview/metadata</a>).</dd>
+</dl>
+</dd>
+<dt>Attributes:</dt>
+<dd><dl class="first last docutils">
+<dt>params (listof dict):</dt>
+<dd>Same as argument <code class="docutils literal"><span class="pre">params</span></code> for reference of inputs.</dd>
+<dt>links (listof str):</dt>
+<dd>List of str containing street view URL requests.</dd>
+<dt>metadata (listof dict):</dt>
+<dd>Objects returned from <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/metadata">street view metadata request</a>.</dd>
+<dt>metadata_links (listof str):</dt>
+<dd>List of str containing street view URL metadata requests.</dd>
+</dl>
+</dd>
+<dt>Examples: </dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Import google_streetview for the api module</span>
+<span class="kn">import</span> <span class="nn">google_streetview.api</span>
+
+<span class="c1"># Define parameters for street view api</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[{</span>
+  <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;600x300&#39;</span><span class="p">,</span> <span class="c1"># max 640x640 pixels</span>
+  <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;46.414382,10.013988&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;heading&#39;</span><span class="p">:</span> <span class="s1">&#39;151.78&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="s1">&#39;-0.76&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;your_dev_key&#39;</span>
+<span class="p">}]</span>
+
+<span class="c1"># Create a results object</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Preview results</span>
+<span class="n">results</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
+
+<span class="c1"># Download images to directory &#39;downloads&#39;</span>
+<span class="n">results</span><span class="o">.</span><span class="n">download_links</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save links</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save_links</span><span class="p">(</span><span class="s1">&#39;links.txt&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save metadata</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save_metadata</span><span class="p">(</span><span class="s1">&#39;metadata.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="api.results.download_links">
+<code class="descname">download_links</code><span class="sig-paren">(</span><em>dir_path</em>, <em>metadata_file='metadata.json'</em>, <em>metadata_status='status'</em>, <em>status_ok='OK'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api.html#results.download_links"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#api.results.download_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download Google Street View images from parameter queries if they are available.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>dir_path (str):</dt>
+<dd>Path of directory to save downloads of images from <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.links</dd>
+<dt>metadata_file (str):</dt>
+<dd>Name of the file with extension to save the <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.metadata</dd>
+<dt>metadata_status (str):</dt>
+<dd>Key name of the status value from <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.metadata response from the metadata API request.</dd>
+<dt>status_ok (str):</dt>
+<dd>Value from the metadata API response status indicating that an image is available.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.results.preview">
+<code class="descname">preview</code><span class="sig-paren">(</span><em>n=10, k=['date', 'location', 'pano_id', 'status'], kheader='pano_id'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api.html#results.preview"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#api.results.preview" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a preview of the request results.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>n (int):</dt>
+<dd>Maximum number of requests to preview</dd>
+<dt>k (str):</dt>
+<dd>Keys in <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.metadata to preview</dd>
+<dt>kheader (str):</dt>
+<dd>Key in <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.metadata[<code class="docutils literal"><span class="pre">k</span></code>] to use as the header</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.results.save_links">
+<code class="descname">save_links</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api.html#results.save_links"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#api.results.save_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a text file of the search result links.</p>
+<p>Saves a text file of the search result links, where each link 
+is saved in a new line. An example is provided below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>https://maps.googleapis.com/maps/api/streetview?size=600x300&amp;location=46.414382,10.013988&amp;heading=151.78&amp;pitch=-0.76&amp;key=yourdevkey
+https://maps.googleapis.com/maps/api/streetview?size=600x300&amp;location=41.403609,2.174448&amp;heading=100&amp;pitch=28&amp;scale=2&amp;key=yourdevkey
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>file_path (str):</dt>
+<dd>Path to the text file to save links to.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.results.save_metadata">
+<code class="descname">save_metadata</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api.html#results.save_metadata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#api.results.save_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save Google Street View metadata from parameter queries.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>file_path (str):</dt>
+<dd>Path of the file with extension to save the <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a>.metadata</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cli">
+<h3>cli<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="cli.run">
+<code class="descclassname">cli.</code><code class="descname">run</code><span class="sig-paren">(</span><em>argv=['C:\\Tools\\Anaconda3\\Scripts\\sphinx-build-script.py', '-b', 'html', 'docs/source', 'docs']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cli.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the google_streetview command line tool.</p>
+<p>This function runs the google_streetview command line tool 
+in a terminal. It was intended for use inside a py file 
+(.py) to be executed using python.</p>
+<dl class="docutils">
+<dt>Notes:</dt>
+<dd><ul class="first simple">
+<li>Optional arguments with <code class="docutils literal"><span class="pre">ref_</span></code> are for the <code class="docutils literal"><span class="pre">site</span></code> and <code class="docutils literal"><span class="pre">site_metadata</span></code> parameters in <a class="reference internal" href="#api.results" title="api.results"><code class="xref py py-class docutils literal"><span class="pre">api.results</span></code></a></li>
+</ul>
+<p>For distribution, this function must be defined in the following files:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># In &#39;google_streetview/google_streetview/__main__.py&#39;</span>
+<span class="kn">from</span> <span class="nn">.cli</span> <span class="k">import</span> <span class="n">run</span>
+<span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># In &#39;google_streetview/google_streetview.py&#39;</span>
+<span class="kn">from</span> <span class="nn">google_streetview.cli</span> <span class="k">import</span> <span class="n">run</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># In &#39;google_streetview/__init__.py&#39;</span>
+<span class="n">__entry_points__</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;google_streetview=google_streetview.cli:run&#39;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Import google_streetview for the cli module</span>
+<span class="kn">import</span> <span class="nn">google_streetview.cli</span>
+
+<span class="c1"># Create command line arguments</span>
+<span class="n">argv</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;cli.py&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;google&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;--searchType=image&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;--build_developerKey=your_dev_key&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;--cx=your_cx_id&#39;</span>
+  <span class="s1">&#39;--num=1&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Run command line</span>
+<span class="n">google_streetview</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">google_streetview</a><ul>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#google-api">Google API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#image-search">Image Search</a></li>
+<li><a class="reference internal" href="#save-results">Save Results</a></li>
+<li><a class="reference internal" href="#default-arguments">Default Arguments</a></li>
+<li><a class="reference internal" href="#additional-arguments">Additional Arguments</a></li>
+<li><a class="reference internal" href="#module-import">Module Import</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#module-api">api</a></li>
+<li><a class="reference internal" href="#cli">cli</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">google_streetview 0.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Richard Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

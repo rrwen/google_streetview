@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cli &#8212; google_streetview 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cli</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Usage:</span>
+<span class="sd">    google_streetview [--optional]</span>
+<span class="sd">    google_streetview [-positional] ...</span>
+<span class="sd">  </span>
+<span class="sd">  A command line tool for Google Street View search.</span>
+<span class="sd">  </span>
+<span class="sd">  Positional arguments:</span>
+<span class="sd">    -h                show this help message and exit</span>
+<span class="sd">    -i                show documentation in browser</span>
+<span class="sd">    -a                show optional arguments in browser</span>
+<span class="sd">    -s &lt;arg&gt;=&lt;value&gt;  set default optional arguments</span>
+<span class="sd">    -r &lt;arg&gt;          remove default arguments</span>
+<span class="sd">    -v                view default arguments</span>
+<span class="sd">    -d                reset default arguments</span>
+<span class="sd">  </span>
+<span class="sd">  Optional arguments:</span>
+<span class="sd">    --pano            panorama ids (req)</span>
+<span class="sd">    --location        text or latitude/longitude (req)</span>
+<span class="sd">    --size            image size (default: 640x640)</span>
+<span class="sd">    --heading         camera heading 0 to 360</span>
+<span class="sd">    --fov             camera zoom up 120 (default: 90)</span>
+<span class="sd">    --pitch           camera angle 90 to -90 (default: 0)</span>
+<span class="sd">    --site_api        base url for api site</span>
+<span class="sd">    --site_metadata   base url for metadata site</span>
+<span class="sd">    --save_links      path for links text file</span>
+<span class="sd">    --save_metadata   path for metadata JSON file</span>
+<span class="sd">    --save_downloads  path for directory of image downloads</span>
+<span class="sd">    --option_silent   &#39;True&#39; to disable preview</span>
+<span class="sd">    --option_preview  num of results to preview</span>
+<span class="sd">    </span>
+<span class="sd">    For more arguments use: google_streetview -a</span>
+<span class="sd">    </span>
+<span class="sd">  Examples:</span>
+<span class="sd">    </span>
+<span class="sd">    Set developer key arguments</span>
+<span class="sd">      &gt; google_streetview -s key=&quot;dev_key&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    Get street view image using location</span>
+<span class="sd">      &gt; google_streetview --location=46.414382,10.013988</span>
+<span class="sd">      &gt; google_streetview --location=46.414382,10.013988;40.720032,-73.988354</span>
+<span class="sd">    </span>
+<span class="sd">    Get street view image using panorama id</span>
+<span class="sd">      &gt; google_streetview --pano=vPnURflnc8AZu5NMLYRddw</span>
+<span class="sd">      &gt; google_streetview --pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg</span>
+<span class="sd">    </span>
+<span class="sd">    Download street view images to &quot;downloads&quot; folder</span>
+<span class="sd">      &gt; google_streetview --location=46.414382,10.013988 --save_downloads=downloads</span>
+<span class="sd">    </span>
+<span class="sd">    Save street view links and metadata</span>
+<span class="sd">      &gt; google_streetview --location=46.414382,10.013988 --save_links=links.txt</span>
+<span class="sd">      &gt; google_streetview --location=46.414382,10.013988 --save_metadata=metadata.json</span>
+<span class="sd">  </span>
+<span class="sd">  For more information visit use: google_streetview -i</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">google_streetview</span> <span class="k">import</span> <span class="n">helpers</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">isfile</span>
+<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">resource_filename</span><span class="p">,</span> <span class="n">Requirement</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">argv</span>
+<span class="kn">from</span> <span class="nn">webbrowser</span> <span class="k">import</span> <span class="n">open_new_tab</span>
+
+<span class="kn">import</span> <span class="nn">kwconfig</span>
+<span class="kn">import</span> <span class="nn">google_streetview.api</span>
+
+<span class="n">_doc_link</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/rrwen/google_streetview&#39;</span>
+<span class="n">_api_link</span> <span class="o">=</span> <span class="s1">&#39;https://developers.google.com/maps/documentation/streetview/intro#url_parameters&#39;</span>
+    
+<div class="viewcode-block" id="run"><a class="viewcode-back" href="../index.html#cli.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">argv</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Runs the google_streetview command line tool.</span>
+<span class="sd">  </span>
+<span class="sd">  This function runs the google_streetview command line tool </span>
+<span class="sd">  in a terminal. It was intended for use inside a py file </span>
+<span class="sd">  (.py) to be executed using python.</span>
+<span class="sd">  </span>
+<span class="sd">  Notes:</span>
+<span class="sd">    * Optional arguments with ``ref_`` are for the ``site`` and ``site_metadata`` parameters in :class:`api.results`</span>
+<span class="sd">  </span>
+<span class="sd">    For distribution, this function must be defined in the following files::</span>
+<span class="sd">      </span>
+<span class="sd">      # In &#39;google_streetview/google_streetview/__main__.py&#39;</span>
+<span class="sd">      from .cli import run</span>
+<span class="sd">      run()</span>
+<span class="sd">      </span>
+<span class="sd">      # In &#39;google_streetview/google_streetview.py&#39;</span>
+<span class="sd">      from google_streetview.cli import run</span>
+<span class="sd">      if __name__ == &#39;__main__&#39;:</span>
+<span class="sd">        run()</span>
+<span class="sd">      </span>
+<span class="sd">      # In &#39;google_streetview/__init__.py&#39;</span>
+<span class="sd">      __entry_points__ = {&#39;console_scripts&#39;: [&#39;google_streetview=google_streetview.cli:run&#39;]}</span>
+<span class="sd">  </span>
+<span class="sd">  Examples::</span>
+<span class="sd">    </span>
+<span class="sd">    # Import google_streetview for the cli module</span>
+<span class="sd">    import google_streetview.cli</span>
+<span class="sd">    </span>
+<span class="sd">    # Create command line arguments</span>
+<span class="sd">    argv = [</span>
+<span class="sd">      &#39;cli.py&#39;,</span>
+<span class="sd">      &#39;google&#39;,</span>
+<span class="sd">      &#39;--searchType=image&#39;,</span>
+<span class="sd">      &#39;--build_developerKey=your_dev_key&#39;,</span>
+<span class="sd">      &#39;--cx=your_cx_id&#39;</span>
+<span class="sd">      &#39;--num=1&#39;</span>
+<span class="sd">    ]</span>
+<span class="sd">    </span>
+<span class="sd">    # Run command line</span>
+<span class="sd">    google_streetview.cli.run(argv)</span>
+<span class="sd">    </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">config_file</span> <span class="o">=</span> <span class="n">kwconfig</span><span class="o">.</span><span class="n">manage</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="n">resource_filename</span><span class="p">(</span><span class="n">Requirement</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;google_streetview&#39;</span><span class="p">),</span> <span class="s1">&#39;google_streetview/config.json&#39;</span><span class="p">),</span>
+    <span class="n">defaults</span><span class="o">=</span><span class="p">{</span>
+      <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;640x640&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;fov&#39;</span><span class="p">:</span> <span class="s1">&#39;90&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;site_api&#39;</span><span class="p">:</span> <span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;site_metadata&#39;</span><span class="p">:</span> <span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview/metadata&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;option_silent&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="s1">&#39;option_preview&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+  <span class="p">)</span>
+  
+  <span class="c1"># (commands) Main command calls</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;-i&#39;</span><span class="p">:</span> <span class="c1"># browse docs</span>
+      <span class="n">open_new_tab</span><span class="p">(</span><span class="n">_doc_link</span><span class="p">)</span>
+      <span class="n">exit</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;-a&#39;</span><span class="p">:</span> <span class="c1"># browse arguments</span>
+      <span class="n">open_new_tab</span><span class="p">(</span><span class="n">_api_link</span><span class="p">)</span>
+      <span class="n">exit</span><span class="p">()</span>
+  <span class="n">config_file</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">argv</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="n">__doc__</span><span class="p">,</span> <span class="n">quit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  
+  <span class="c1"># (parse_args) Parse command arguments into dict</span>
+  <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwconfig</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+  <span class="n">kwargs</span> <span class="o">=</span> <span class="n">config_file</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+  
+  <span class="c1"># (split_args) Split args into build, cse, and save arguments</span>
+  <span class="n">siteargs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">apiargs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">saveargs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">optionargs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;site_&#39;</span> <span class="o">==</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]:</span>
+      <span class="n">siteargs</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">:]]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">elif</span> <span class="s1">&#39;save_&#39;</span> <span class="o">==</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
+      <span class="n">saveargs</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">5</span><span class="p">:]]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">elif</span> <span class="s1">&#39;option_&#39;</span> <span class="o">==</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]:</span>
+      <span class="n">optionargs</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">7</span><span class="p">:]]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">apiargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+      
+  <span class="c1"># (api_results) Get google api results</span>
+  <span class="n">site_api</span> <span class="o">=</span> <span class="n">siteargs</span><span class="p">[</span><span class="s1">&#39;api&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;api&#39;</span> <span class="ow">in</span> <span class="n">siteargs</span> <span class="k">else</span> <span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview&#39;</span>
+  <span class="n">site_metadata</span> <span class="o">=</span> <span class="n">siteargs</span><span class="p">[</span><span class="s1">&#39;site_metadata&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;metadata&#39;</span> <span class="ow">in</span> <span class="n">siteargs</span> <span class="k">else</span> <span class="s1">&#39;https://maps.googleapis.com/maps/api/streetview/metadata&#39;</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">results</span><span class="p">(</span>
+    <span class="n">helpers</span><span class="o">.</span><span class="n">api_list</span><span class="p">(</span><span class="n">apiargs</span><span class="p">),</span>
+    <span class="n">site_api</span><span class="o">=</span><span class="n">site_api</span><span class="p">,</span>
+    <span class="n">site_metadata</span><span class="o">=</span><span class="n">site_metadata</span><span class="p">)</span>
+  
+  <span class="c1"># (api_print) Print a preview of results</span>
+  <span class="k">if</span> <span class="s1">&#39;silent&#39;</span> <span class="ow">in</span> <span class="n">optionargs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">optionargs</span><span class="p">[</span><span class="s1">&#39;silent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
+      <span class="n">results</span><span class="o">.</span><span class="n">preview</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">optionargs</span><span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">]))</span>
+  
+  <span class="c1"># (api_save) Save metadata</span>
+  <span class="k">if</span> <span class="s1">&#39;links&#39;</span> <span class="ow">in</span> <span class="n">saveargs</span><span class="p">:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">save_links</span><span class="p">(</span><span class="n">saveargs</span><span class="p">[</span><span class="s1">&#39;links&#39;</span><span class="p">])</span>
+  <span class="k">if</span> <span class="s1">&#39;metadata&#39;</span> <span class="ow">in</span> <span class="n">saveargs</span><span class="p">:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">save_metadata</span><span class="p">(</span><span class="n">saveargs</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">])</span>
+  
+  <span class="c1"># (api_download) Download links</span>
+  <span class="k">if</span> <span class="s1">&#39;downloads&#39;</span> <span class="ow">in</span> <span class="n">saveargs</span><span class="p">:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">download_links</span><span class="p">(</span><span class="n">saveargs</span><span class="p">[</span><span class="s1">&#39;downloads&#39;</span><span class="p">])</span></div>
+    
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 0.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Richard Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
