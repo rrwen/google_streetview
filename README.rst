@@ -33,7 +33,7 @@ Ensure that a `Google API developer key <https://developers.google.com/api-clien
 
   google_streetview -s key="your_dev_key"
 
-Search the street view for latitude and longitude ``46.414382,10.013988``::
+Search street view for latitude and longitude ``46.414382,10.013988``::
   
   google_streetview "46.414382,10.013988"
   
