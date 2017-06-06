@@ -39,7 +39,7 @@ Google API
 
 An `API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_ for the `Google Application Programming Interface (API) <https://developers.google.com/api-client-library/python/>`_ can be setup with the following instructions:
 
-1. Enable `Google Custom Search Engine <https://console.developers.google.com/apis/api/customsearch.googleapis.com>`_
+1. Enable `Google Street View Image API <https://console.developers.google.com/apis/api/street-view-image-backend.googleapis.com>`_
 2. Go to `Google API Console Credentials <https://console.developers.google.com/apis/credentials>`_
 3. Click **Create Credentials -> API Key**
 4. Set ``key`` by replacing "your_dev_key" with the **API Key**
@@ -177,7 +177,7 @@ A number of optional arguments defined using ``--`` are not shown when using ``g
 
   google_streetview -a
 
-For example, the digital signature for billing can be set by argument ``signature`` which is a named argument in `Google's Street View Image API <https://developers.google.com/maps/documentation/streetview/intro>`_::
+For example, the digital signature for billing can be set by argument ``signature`` which is a named paramter in the API::
   
   google_streetview cat --signature="your_signature"
   

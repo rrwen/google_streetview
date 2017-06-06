@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'google_streetview.tex', 'search\\_google Documentation',
+    (master_doc, 'google_streetview.tex', 'google\\_streetview Documentation',
      package.__author__, 'manual'),
 ]
 

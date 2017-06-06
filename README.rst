@@ -97,9 +97,9 @@ Tests
 ::
   
   pip install . -I
-  google_streetview -s key=your_dev_key
+  python -m google_streetview -s key=your_dev_key
   python -m unittest
-  google_streetview -d
+  python -m google_streetview -d
 
 Documentation Maintenance
 *************************
@@ -140,9 +140,9 @@ Upload to PyPi
 ::
   
   pip install . -I
-  google_streetview -s key=your_dev_key
+  python -m google_streetview -s key=your_dev_key
   python -m unittest
-  google_streetview -d
+  python -m google_streetview -d
   sphinx-build -b html docs/source docs
   python setup.py sdist
   twine upload dist/*

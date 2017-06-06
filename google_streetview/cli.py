@@ -118,10 +118,8 @@ def run(argv=argv):
       'size': '640x640',
       'fov': '90',
       'pitch': '0',
-      'site_api': 'https://maps.googleapis.com/maps/api/streetview',
-      'site_metadata': 'https://maps.googleapis.com/maps/api/streetview/metadata',
-      'option_silent': False,
-      'option_preview': 10}
+      'option_silent': 'false',
+      'option_preview': '10'}
   )
   
   # (commands) Main command calls
