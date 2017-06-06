@@ -39,18 +39,19 @@
       > google_streetview -s key="dev_key"
     
     Get street view image using location
-      > google_streetview location=46.414382,10.013988
-      > google_streetview location=46.414382,10.013988;40.720032,-73.988354
+      > google_streetview --location=46.414382,10.013988
+      > google_streetview --location=46.414382,10.013988;40.720032,-73.988354
     
     Get street view image using panorama id
-      > google_streetview pano=vPnURflnc8AZu5NMLYRddw
-      > google_streetview pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg
+      > google_streetview --pano=vPnURflnc8AZu5NMLYRddw
+      > google_streetview --pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg
     
     Download street view images to "downloads" folder
-      > google_streetview location=46.414382,10.013988 --save_downloads=downloads
+      > google_streetview --location=46.414382,10.013988 --save_downloads=downloads
     
-    Download street view metadata
-      > google_streetview location=46.414382,10.013988 --save_metadata=metadata.json
+    Save street view links and metadata
+      > google_streetview --location=46.414382,10.013988 --save_links=links.txt
+      > google_streetview --location=46.414382,10.013988 --save_metadata=metadata.json
   
   For more information visit use: google_streetview -i
 """
@@ -117,8 +118,8 @@ def run(argv=argv):
       'size': '640x640',
       'fov': '90',
       'pitch': '0',
-      'ref_site': 'https://maps.googleapis.com/maps/api/streetview',
-      'ref_site_metadata': 'https://maps.googleapis.com/maps/api/streetview/metadata',
+      'site_api': 'https://maps.googleapis.com/maps/api/streetview',
+      'site_metadata': 'https://maps.googleapis.com/maps/api/streetview/metadata',
       'option_silent': False,
       'option_preview': 10}
   )

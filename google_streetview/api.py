@@ -50,8 +50,17 @@ class results:
       # Create a results object
       results = google_streetview.api.results(params)
       
+      # Preview results
+      results.preview()
+      
       # Download images to directory 'downloads'
       results.download_links('downloads')
+      
+      # Save links
+      results.save_links('links.txt')
+      
+      # Save metadata
+      results.save_metadata('metadata.json')
   """
   def __init__(
     self,
