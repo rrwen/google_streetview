@@ -61,54 +61,66 @@ Please ensure that the `Setup`_ section was completed::
 
 Image Search
 ************
-
-Set developer key arguments::
-  
-  google_streetview -s key="dev_key"
     
 Get street view image using the location argument ``--location`` and providing ``<latitude>,<longitude>`` values::
   
   google_streetview --location=46.414382,10.013988
   
+.. image:: img/location_example.jpg
+  
 Get street view image using the panorama id argument ``--pano``::
   
   google_streetview --pano=vPnURflnc8AZu5NMLYRddw
+  
+.. image:: img/pano_example.jpg
 
 Multiple locations and panorama ids can be given by separating with ``;``::
   
   google_streetview --location=46.414382,10.013988;40.720032,-73.988354
   google_streetview --pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg
   
+.. image:: img/multi_example.jpg
+  
 Adjust size of the images up to 640 by 640 pixels with the ``--size`` argument and providing ``<width>x<height>`` values (the default is ``640x640``)::
 
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --size=600x400
+  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --size=200x200
+
+.. image:: img/size_example.jpg
   
 Adjust the heading of the camera with the ``--heading`` argument, where 0 and 360 are north, 90 is east, 180 is south, and 270 is west::
   
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --heading=0
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --heading=90
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --heading=180
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --heading=270
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --heading=360
+  google_streetview --location=46.414382,10.013988 --heading=0
+  google_streetview --location=46.414382,10.013988 --heading=90
+  google_streetview --location=46.414382,10.013988 --heading=180
+  google_streetview --location=46.414382,10.013988 --heading=270
+  google_streetview --location=46.414382,10.013988 --heading=360
+
+.. image:: img/heading_example.jpg
 
 Adjust the image's horizontal field of view with the ``--fov`` argument, which represents zoom values of up to 120 (the default is ``90``)::
 
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --fov=0
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --fov=90
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --fov=120
-  
+  google_streetview --location=46.414382,10.013988 --fov=0
+  google_streetview --location=46.414382,10.013988 --fov=90
+  google_streetview --location=46.414382,10.013988 --fov=120
+
+.. image:: img/fov_example.jpg
+
 Adjust the camera's up and down angle with the ``--pitch`` argument, where positive values up to 90 degrees indicate straight up and negative values down to -90 indicate straight down (the default is ``0``::
   
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --pitch=0
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --pitch=90
-  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --pitch=-90
-  
+  google_streetview --location=46.414382,10.013988 --pitch=0
+  google_streetview --location=46.414382,10.013988 --pitch=90
+  google_streetview --location=46.414382,10.013988 --pitch=-90
+
+.. image:: img/pitch_example.jpg
+
 Save Results
 ************
 
 Download street view images to "downloads" folder with the ``--save_downloads`` argument::
   
-  google_streetview --location=46.414382,10.013988 --save_downloads=downloads
+  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --save_downloads=downloads
+  
+.. image:: img/download_example.jpg
   
 Save metadata::
   
@@ -128,14 +140,18 @@ Save links and metadata::
 Multiple Arguments
 ******************
 
-Multiple arguments can be specified by separating parameter values with the semi-colon ``;`` seen in the ``--heading`` parameter::
+Multiple arguments can be specified by separating parameter values with the semi-colon ``;`` seen in the ``heading`` parameter::
 
   google_streetview --location=46.414382,10.013988 --heading=0;90;180;270
+  
+.. image:: img/heading_example.jpg
 
 Download the 360 panorama imagery for 2 locations using a field of vision ``fov`` of 90, which provides 8 images (90 degree from ``fov`` up to 270 degrees as 0 and 360 refer to the same ``heading``)::
 
   google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --fov=90 --heading=0;90;180;270
-
+  
+.. image:: img/panorama_example.jpg
+  
 Default Arguments
 *****************
 
@@ -215,7 +231,7 @@ The `google_streetview <https://pypi.python.org/pypi/search-google>`_ package ma
   # Download images to directory 'downloads'
   results.download_links('downloads')
 
-For more details on module usage, see the examples in `api`_ and `api_list`_.
+For more details on module usage, see the examples in `api`_ for single argument queries and `helpers.api_list`_ for multiple argument queries.
   
 Modules
 -------

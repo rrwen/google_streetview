@@ -104,54 +104,58 @@
 </div>
 <div class="section" id="image-search">
 <h3>Image Search<a class="headerlink" href="#image-search" title="Permalink to this headline">¶</a></h3>
-<p>Set developer key arguments:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">-</span><span class="n">s</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dev_key&quot;</span>
-</pre></div>
-</div>
 <p>Get street view image using the location argument <code class="docutils literal"><span class="pre">--location</span></code> and providing <code class="docutils literal"><span class="pre">&lt;latitude&gt;,&lt;longitude&gt;</span></code> values:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span>
 </pre></div>
 </div>
+<img alt="_images/location_example.jpg" src="_images/location_example.jpg" />
 <p>Get street view image using the panorama id argument <code class="docutils literal"><span class="pre">--pano</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span>
 </pre></div>
 </div>
+<img alt="_images/pano_example.jpg" src="_images/pano_example.jpg" />
 <p>Multiple locations and panorama ids can be given by separating with <code class="docutils literal"><span class="pre">;</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span>
 <span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span><span class="p">;</span><span class="n">A1v2IdX_6HKnIQa2SPyyAg</span>
 </pre></div>
 </div>
+<img alt="_images/multi_example.jpg" src="_images/multi_example.jpg" />
 <p>Adjust size of the images up to 640 by 640 pixels with the <code class="docutils literal"><span class="pre">--size</span></code> argument and providing <code class="docutils literal"><span class="pre">&lt;width&gt;x&lt;height&gt;</span></code> values (the default is <code class="docutils literal"><span class="pre">640x640</span></code>):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">600</span><span class="n">x400</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="n">x200</span>
 </pre></div>
 </div>
+<img alt="_images/size_example.jpg" src="_images/size_example.jpg" />
 <p>Adjust the heading of the camera with the <code class="docutils literal"><span class="pre">--heading</span></code> argument, where 0 and 360 are north, 90 is east, 180 is south, and 270 is west:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">90</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">180</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">270</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">360</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">180</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">270</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">360</span>
 </pre></div>
 </div>
+<img alt="_images/heading_example.jpg" src="_images/heading_example.jpg" />
 <p>Adjust the image&#8217;s horizontal field of view with the <code class="docutils literal"><span class="pre">--fov</span></code> argument, which represents zoom values of up to 120 (the default is <code class="docutils literal"><span class="pre">90</span></code>):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">90</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">120</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">120</span>
 </pre></div>
 </div>
+<img alt="_images/fov_example.jpg" src="_images/fov_example.jpg" />
 <p>Adjust the camera&#8217;s up and down angle with the <code class="docutils literal"><span class="pre">--pitch</span></code> argument, where positive values up to 90 degrees indicate straight up and negative values down to -90 indicate straight down (the default is <code class="docutils literal"><span class="pre">0</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">90</span>
-<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=-</span><span class="mi">90</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">pitch</span><span class="o">=-</span><span class="mi">90</span>
 </pre></div>
 </div>
+<img alt="_images/pitch_example.jpg" src="_images/pitch_example.jpg" />
 </div>
 <div class="section" id="save-results">
 <h3>Save Results<a class="headerlink" href="#save-results" title="Permalink to this headline">¶</a></h3>
 <p>Download street view images to &#8220;downloads&#8221; folder with the <code class="docutils literal"><span class="pre">--save_downloads</span></code> argument:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_downloads</span><span class="o">=</span><span class="n">downloads</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">save_downloads</span><span class="o">=</span><span class="n">downloads</span>
 </pre></div>
 </div>
+<img alt="_images/download_example.jpg" src="_images/download_example.jpg" />
 <p>Save metadata:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
 <span class="n">google_streetview</span> <span class="o">--</span><span class="n">pano</span><span class="o">=</span><span class="n">vPnURflnc8AZu5NMLYRddw</span> <span class="o">--</span><span class="n">save_metadata</span><span class="o">=</span><span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
@@ -170,14 +174,16 @@
 </div>
 <div class="section" id="multiple-arguments">
 <h3>Multiple Arguments<a class="headerlink" href="#multiple-arguments" title="Permalink to this headline">¶</a></h3>
-<p>Multiple arguments can be specified by separating parameter values with the semi-colon <code class="docutils literal"><span class="pre">;</span></code> seen in the <code class="docutils literal"><span class="pre">--heading</span></code> parameter:</p>
+<p>Multiple arguments can be specified by separating parameter values with the semi-colon <code class="docutils literal"><span class="pre">;</span></code> seen in the <code class="docutils literal"><span class="pre">heading</span></code> parameter:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="mi">90</span><span class="p">;</span><span class="mi">180</span><span class="p">;</span><span class="mi">270</span>
 </pre></div>
 </div>
+<img alt="_images/heading_example.jpg" src="_images/heading_example.jpg" />
 <p>Download the 360 panorama imagery for 2 locations using a field of vision <code class="docutils literal"><span class="pre">fov</span></code> of 90, which provides 8 images (90 degree from <code class="docutils literal"><span class="pre">fov</span></code> up to 270 degrees as 0 and 360 refer to the same <code class="docutils literal"><span class="pre">heading</span></code>):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">90</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="mi">90</span><span class="p">;</span><span class="mi">180</span><span class="p">;</span><span class="mi">270</span>
 </pre></div>
 </div>
+<img alt="_images/panorama_example.jpg" src="_images/panorama_example.jpg" />
 </div>
 <div class="section" id="default-arguments">
 <h3>Default Arguments<a class="headerlink" href="#default-arguments" title="Permalink to this headline">¶</a></h3>
@@ -256,7 +262,7 @@
 <span class="n">results</span><span class="o">.</span><span class="n">download_links</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more details on module usage, see the examples in <a class="reference internal" href="#api">api</a> and <a href="#id5"><span class="problematic" id="id6">`api_list`_</span></a>.</p>
+<p>For more details on module usage, see the examples in <a class="reference internal" href="#api">api</a> for single argument queries and <a class="reference internal" href="#helpers.api_list">helpers.api_list</a> for multiple argument queries.</p>
 </div>
 </div>
 <div class="section" id="modules">

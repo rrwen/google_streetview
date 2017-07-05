@@ -45,8 +45,6 @@ Obtain a 360 panorama by rotating the camera ``heading`` given a 90 degree field
 
   google_streetview --location="46.414382,10.013988" --fov=90 --heading=0;90;180;270
   
-.. image:: img/gsv_0.jpg
-  
 Use as a Python module:
 
 .. code-block:: python
