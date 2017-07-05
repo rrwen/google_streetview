@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>google_streetview &#8212; google_streetview 1.0.0 documentation</title>
+    <title>google_streetview &#8212; google_streetview 1.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.0',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">google_streetview 1.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">google_streetview 1.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -168,6 +168,17 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="multiple-arguments">
+<h3>Multiple Arguments<a class="headerlink" href="#multiple-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Multiple arguments can be specified by separating parameter values with the semi-colon <code class="docutils literal"><span class="pre">;</span></code> seen in the <code class="docutils literal"><span class="pre">--heading</span></code> parameter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="mi">90</span><span class="p">;</span><span class="mi">180</span><span class="p">;</span><span class="mi">270</span>
+</pre></div>
+</div>
+<p>Download the 360 panorama imagery for 2 locations using a field of vision <code class="docutils literal"><span class="pre">fov</span></code> of 90, which provides 8 images (90 degree from <code class="docutils literal"><span class="pre">fov</span></code> up to 270 degrees as 0 and 360 refer to the same <code class="docutils literal"><span class="pre">heading</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">google_streetview</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="mf">46.414382</span><span class="p">,</span><span class="mf">10.013988</span><span class="p">;</span><span class="mf">40.720032</span><span class="p">,</span><span class="o">-</span><span class="mf">73.988354</span> <span class="o">--</span><span class="n">fov</span><span class="o">=</span><span class="mi">90</span> <span class="o">--</span><span class="n">heading</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="mi">90</span><span class="p">;</span><span class="mi">180</span><span class="p">;</span><span class="mi">270</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="default-arguments">
 <h3>Default Arguments<a class="headerlink" href="#default-arguments" title="Permalink to this headline">¶</a></h3>
 <p>Default arguments persist even after the console is closed. Defaults enable user customization of the google_streetview command without a long list of arguments every call.</p>
@@ -242,10 +253,10 @@
 <span class="n">results</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
 <span class="c1"># Download images to directory &#39;downloads&#39;</span>
-<span class="n">results</span><span class="o">.</span><span class="n">download_urls</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">download_links</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more details on module usage, see the example in <a class="reference internal" href="#api">api</a>.</p>
+<p>For more details on module usage, see the examples in <a class="reference internal" href="#api">api</a> and <a href="#id5"><span class="problematic" id="id6">`api_list`_</span></a>.</p>
 </div>
 </div>
 <div class="section" id="modules">
@@ -438,6 +449,59 @@ in a terminal. It was intended for use inside a py file
 </dd></dl>
 
 </div>
+<div class="section" id="helpers">
+<h3>helpers<a class="headerlink" href="#helpers" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="helpers.api_list">
+<code class="descclassname">helpers.</code><code class="descname">api_list</code><span class="sig-paren">(</span><em>apiargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/helpers.html#api_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#helpers.api_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Google Street View Image API results.</p>
+<p>Constructs a list of <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/">Google Street View Image API queries</a>
+from a dictionary.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>apiargs (listof dict):</dt>
+<dd>Dict containing <a class="reference external" href="https://developers.google.com/maps/documentation/streetview/intro">street view URL parameters</a>.
+Each parameter can have multiple values if separated by <code class="docutils literal"><span class="pre">;</span></code>.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>A <code class="docutils literal"><span class="pre">listof</span> <span class="pre">dict</span></code> containing single query requests per dictionary for Google Street View Image API.</dd>
+<dt>Examples: </dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Import google_streetview for the api and helper module</span>
+<span class="kn">import</span> <span class="nn">google_streetview.api</span>
+<span class="kn">import</span> <span class="nn">google_streetview.helpers</span>
+
+<span class="c1"># Create a dictionary with multiple parameters separated by ;</span>
+<span class="n">apiargs</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;46.414382,10.013988;40.720032,-73.988354&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;640x300;640x640&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;heading&#39;</span><span class="p">:</span> <span class="s1">&#39;0;90;180;270&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;fov&#39;</span><span class="p">:</span> <span class="s1">&#39;0;90;120&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="s1">&#39;-90;0;90&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Get a list of all possible queries from multiple parameters</span>
+<span class="n">api_list</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">api_list</span><span class="p">(</span><span class="n">apiargs</span><span class="p">)</span>
+
+<span class="c1"># Create a results object for all possible queries</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">google_streetview</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">api_list</span><span class="p">)</span>
+
+<span class="c1"># Preview results</span>
+<span class="n">results</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
+
+<span class="c1"># Download images to directory &#39;downloads&#39;</span>
+<span class="n">results</span><span class="o">.</span><span class="n">download_links</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save metadata</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save_metadata</span><span class="p">(</span><span class="s1">&#39;metadata.json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </div>
 </div>
 
@@ -458,6 +522,7 @@ in a terminal. It was intended for use inside a py file
 <li><a class="reference internal" href="#usage">Usage</a><ul>
 <li><a class="reference internal" href="#image-search">Image Search</a></li>
 <li><a class="reference internal" href="#save-results">Save Results</a></li>
+<li><a class="reference internal" href="#multiple-arguments">Multiple Arguments</a></li>
 <li><a class="reference internal" href="#default-arguments">Default Arguments</a></li>
 <li><a class="reference internal" href="#additional-arguments">Additional Arguments</a></li>
 <li><a class="reference internal" href="#module-import">Module Import</a></li>
@@ -466,6 +531,7 @@ in a terminal. It was intended for use inside a py file
 <li><a class="reference internal" href="#modules">Modules</a><ul>
 <li><a class="reference internal" href="#module-api">api</a></li>
 <li><a class="reference internal" href="#cli">cli</a></li>
+<li><a class="reference internal" href="#helpers">helpers</a></li>
 </ul>
 </li>
 </ul>
@@ -502,7 +568,7 @@ in a terminal. It was intended for use inside a py file
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">google_streetview 1.0.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">google_streetview 1.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

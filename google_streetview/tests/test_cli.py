@@ -45,6 +45,17 @@ class cliTest(TestCase):
     ]
     run(argv)
     
+  def test_camera_multi(self):
+    argv = [
+      'cli.py',
+      '--pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg',
+      '--size=640x300',
+      '--heading=0;90;180;270',
+      '--fov=90',
+      '--pitch=0'
+    ]
+    run(argv)
+    
   def test_save_links(self):
     argv = [
       'cli.py',

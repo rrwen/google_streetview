@@ -37,6 +37,16 @@ Search street view for latitude and longitude ``46.414382,10.013988``::
   
   google_streetview "46.414382,10.013988"
   
+Save images to a directory::
+
+  google_streetview --location="46.414382,10.013988" --save_downloads=downloads
+  
+Obtain a 360 panorama by rotating the camera ``heading`` given a 90 degree field of vision ``fov``::
+
+  google_streetview --location="46.414382,10.013988" --fov=90 --heading=0;90;180;270
+  
+.. image:: img/gsv_0.jpg
+  
 Use as a Python module:
 
 .. code-block:: python
@@ -57,7 +67,7 @@ Use as a Python module:
   results = google_streetview.api.results(params)
   
   # Download images to directory 'downloads'
-  results.download_urls('downloads')
+  results.download_links('downloads')
   
 For more usage details, see the `Documentation <https://rrwen.github.io/google_streetview>`_.
 
@@ -92,7 +102,7 @@ Tests
 4. Set your Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_
 5. Run tests
 6. Reset config file to defaults
-7. Please note that this will use up 8 requests from your quota
+7. Please note that this will use up 16 requests from your quota
 
 ::
   

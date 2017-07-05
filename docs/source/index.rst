@@ -124,7 +124,18 @@ Save links and metadata::
   
   google_streetview --location=46.414382,10.013988 --save_links=links.txt --save_metadata=metadata.json
   google_streetview --pano=vPnURflnc8AZu5NMLYRdd --save_links=links.txt --save_metadata=metadata.json
-  
+
+Multiple Arguments
+******************
+
+Multiple arguments can be specified by separating parameter values with the semi-colon ``;`` seen in the ``--heading`` parameter::
+
+  google_streetview --location=46.414382,10.013988 --heading=0;90;180;270
+
+Download the 360 panorama imagery for 2 locations using a field of vision ``fov`` of 90, which provides 8 images (90 degree from ``fov`` up to 270 degrees as 0 and 360 refer to the same ``heading``)::
+
+  google_streetview --location=46.414382,10.013988;40.720032,-73.988354 --fov=90 --heading=0;90;180;270
+
 Default Arguments
 *****************
 
@@ -202,9 +213,9 @@ The `google_streetview <https://pypi.python.org/pypi/search-google>`_ package ma
   results = google_streetview.api.results(params)
   
   # Download images to directory 'downloads'
-  results.download_urls('downloads')
+  results.download_links('downloads')
 
-For more details on module usage, see the example in `api`_.
+For more details on module usage, see the examples in `api`_ and `api_list`_.
   
 Modules
 -------
@@ -219,4 +230,9 @@ cli
 ***
 
 .. autofunction:: cli.run
+
+helpers
+*******
+
+.. autofunction:: helpers.api_list
    

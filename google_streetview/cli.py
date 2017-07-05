@@ -45,6 +45,9 @@
     Get street view image using panorama id
       > google_streetview --pano=vPnURflnc8AZu5NMLYRddw
       > google_streetview --pano=vPnURflnc8AZu5NMLYRddw;A1v2IdX_6HKnIQa2SPyyAg
+      
+    Get 360 panorama using heading
+      > google_streetview --location=46.414382,10.013988 --heading=0;90;180;270 --fov=90
     
     Download street view images to "downloads" folder
       > google_streetview --location=46.414382,10.013988 --save_downloads=downloads
