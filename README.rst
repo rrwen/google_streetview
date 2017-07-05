@@ -97,7 +97,7 @@ Tests
 1. Clone into current path ``git clone https://github.com/rrwen/google_streetview``
 2. Enter into folder ``cd google_streetview``
 3. Ensure `unittest <https://docs.python.org/2.7/library/unittest.html>`_ is available
-4. Set your Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_
+4. Set your `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_
 5. Run tests
 6. Reset config file to defaults
 7. Please note that this will use up 16 requests from your quota
