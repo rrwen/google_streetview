@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>helpers &#8212; google_streetview 1.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 1.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for helpers</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<div class="viewcode-block" id="api_list"><a class="viewcode-back" href="../index.html#helpers.api_list">[docs]</a><span class="k">def</span> <span class="nf">api_list</span><span class="p">(</span><span class="n">apiargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Google Street View Image API results.</span>
+<span class="sd">  </span>
+<span class="sd">  Constructs a list of `Google Street View Image API queries &lt;https://developers.google.com/maps/documentation/streetview/&gt;`_</span>
+<span class="sd">  from a dictionary.</span>
+<span class="sd">  </span>
+<span class="sd">  Args:</span>
+<span class="sd">    apiargs (listof dict):</span>
+<span class="sd">      Dict containing `street view URL parameters &lt;https://developers.google.com/maps/documentation/streetview/intro&gt;`_.</span>
+<span class="sd">      Each parameter can have multiple values if separated by ``;``.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns:</span>
+<span class="sd">    A ``listof dict`` containing single query requests per dictionary for Google Street View Image API.</span>
+<span class="sd">  </span>
+<span class="sd">  Examples: </span>
+<span class="sd">    ::</span>
+<span class="sd">    </span>
+<span class="sd">      # Import google_streetview for the api and helper module</span>
+<span class="sd">      import google_streetview.api</span>
+<span class="sd">      import google_streetview.helpers</span>
+<span class="sd">      </span>
+<span class="sd">      # Create a dictionary with multiple parameters separated by ;</span>
+<span class="sd">      apiargs = {</span>
+<span class="sd">        &#39;location&#39;: &#39;46.414382,10.013988;40.720032,-73.988354&#39;,</span>
+<span class="sd">        &#39;size&#39;: &#39;640x300;640x640&#39;,</span>
+<span class="sd">        &#39;heading&#39;: &#39;0;90;180;270&#39;,</span>
+<span class="sd">        &#39;fov&#39;: &#39;0;90;120&#39;,</span>
+<span class="sd">        &#39;pitch&#39;: &#39;-90;0;90&#39;</span>
+<span class="sd">      }</span>
+<span class="sd">      </span>
+<span class="sd">      # Get a list of all possible queries from multiple parameters</span>
+<span class="sd">      api_list = google_streetview.helpers.api_list(apiargs)</span>
+<span class="sd">      </span>
+<span class="sd">      # Create a results object for all possible queries</span>
+<span class="sd">      results = google_streetview.api.results(api_list)</span>
+<span class="sd">      </span>
+<span class="sd">      # Preview results</span>
+<span class="sd">      results.preview()</span>
+<span class="sd">      </span>
+<span class="sd">      # Download images to directory &#39;downloads&#39;</span>
+<span class="sd">      results.download_links(&#39;downloads&#39;)</span>
+<span class="sd">      </span>
+<span class="sd">      # Save metadata</span>
+<span class="sd">      results.save_metadata(&#39;metadata.json&#39;)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="c1"># (api_query) Query combinations for each parameter</span>
+  <span class="n">api_queries</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">apiargs</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">apiargs</span><span class="p">:</span>
+      <span class="n">api_queries</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">apiargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+      <span class="n">apiargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+  
+  <span class="c1"># (api_list) Build list of api requests based on query combinations</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">api_queries</span><span class="p">]</span>
+  <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">api_queries</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">api_queries</span><span class="p">]</span>
+  <span class="n">combinations</span> <span class="o">=</span> <span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">queries</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">api_queries</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">combo</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">:</span>
+    <span class="n">api_copy</span> <span class="o">=</span> <span class="n">apiargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">combo</span><span class="p">):</span>
+      <span class="n">api_copy</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameter</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">api_copy</span><span class="p">)</span>
+  <span class="k">return</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span> <span class="c1"># if request is successful</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">decode_content</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">google_streetview 1.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Richard Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
