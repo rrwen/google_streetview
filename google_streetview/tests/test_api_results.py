@@ -56,7 +56,8 @@ class apiTest(TestCase):
   
   def test_save_metadata(self):
     results = self.results
-    open(self.tempfile, 'w').close()
+    with open(self.tempfile, 'w') as f:
+      f.close()
     results.save_metadata(self.tempfile)
     with open(self.tempfile, 'r') as f:    
       metadata = json.load(f)
