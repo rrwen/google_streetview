@@ -47,9 +47,10 @@ class apiTest(TestCase):
   
   def test_save_links(self):
     results = self.results
-    open(self.tempfile, 'w').close()
+    with open(self.tempfile, 'w') as f:
+      f.close()
     results.save_links(self.tempfile)
-    with open(self.tempfile) as f:
+    with open(self.tempfile, 'r') as f:
       nlinks = len(f.readlines())
     self.assertTrue(nlinks == 1)
   
