@@ -6,6 +6,6 @@ cache: pip
 install: 
   - pip install google_streetview
 script:
-  - google_streetview -s key=AIzaSyDLzW6n52tcRTGboOOepiKelNVdLC9qSzA
+  - google_streetview -s key="AIzaSyDLzW6n52tcRTGboOOepiKelNVdLC9qSzA"
   - python -m unittest
   - google_streetview -d
