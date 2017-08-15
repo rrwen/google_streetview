@@ -1,1 +1,11 @@
 language: python
+python:
+  - "2.7"
+  - "3.6"
+cache: pip
+install: 
+  - pip install google_streetview
+script:
+  - google_streetview -s key=your_dev_key
+  - python -m unittest
+  - google_streetview -d
