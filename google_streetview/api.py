@@ -4,9 +4,9 @@ from google_streetview import helpers
 from os import path, makedirs
 from pprint import pprint
 try:
-  from urllib.parse import urlparse
+  from urllib.parse import urlencode
 except ImportError:
-  from urlparse import urlparse
+  from urllib import urlencode
 
 import json
 import requests
