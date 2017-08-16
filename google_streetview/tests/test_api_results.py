@@ -47,8 +47,6 @@ class apiTest(TestCase):
   
   def test_save_links(self):
     results = self.results
-    with open(self.tempfile, 'w') as f:
-      f.close()
     results.save_links(self.tempfile)
     with open(self.tempfile, 'r') as f:
       nlinks = len(f.readlines())
@@ -56,8 +54,6 @@ class apiTest(TestCase):
   
   def test_save_metadata(self):
     results = self.results
-    with open(self.tempfile, 'w') as f:
-      f.close()
     results.save_metadata(self.tempfile)
     with open(self.tempfile, 'r') as f:    
       metadata = json.load(f)
