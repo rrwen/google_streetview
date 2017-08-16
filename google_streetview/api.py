@@ -3,7 +3,10 @@
 from google_streetview import helpers
 from os import path, makedirs
 from pprint import pprint
-from urllib.parse import urlencode
+try:
+  from urllib.parse import urlparse
+except ImportError:
+  from urlparse import urlparse
 
 import json
 import requests
