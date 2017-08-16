@@ -10,3 +10,5 @@ script:
   - google_streetview -s key="AIzaSyDLzW6n52tcRTGboOOepiKelNVdLC9qSzA"
   - coverage run --source=google_streetview -m unittest
   - google_streetview -d
+after_success:
+  - coveralls
