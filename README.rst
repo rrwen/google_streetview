@@ -9,6 +9,8 @@ google_streetview
 
 A command line tool and module for Google Street View Image API.
 
+.. image:: https://badge.fury.io/py/google-streetview.svg
+    :target: https://badge.fury.io/py/google-streetview
 .. image:: https://img.shields.io/github/issues/rrwen/google_streetview.svg
     :target: https://github.com/rrwen/google_streetview/issues
 .. image:: https://img.shields.io/github/forks/rrwen/google_streetview.svg
