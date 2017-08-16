@@ -157,7 +157,7 @@ class results:
         Path to the text file to save links to.
     """
     data = '\n'.join(self.links)
-    with open(file_path, 'w') as out_file:
+    with open(file_path, 'w+') as out_file:
       out_file.write(data)
   
   def save_metadata(self, file_path):
@@ -167,6 +167,6 @@ class results:
       file_path (str):
         Path of the file with extension to save the :class:`api.results`.metadata
     """
-    with open(file_path, 'w') as out_file:
+    with open(file_path, 'w+') as out_file:
       json.dump(self.metadata, out_file)
       
