@@ -22,7 +22,7 @@ A command line tool and module for Google Street View Image API.
 .. image:: https://travis-ci.org/rrwen/google_streetview.svg?branch=master
     :target: https://travis-ci.org/rrwen/google_streetview
 .. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
-    :target: https://twitter.com/intent/tweet?text=%23python%20tool%20for%20%23GoogleStreetView%20Image%20API:%20https/github.com/rrwen/google_streetview
+    :target: https://twitter.com/intent/tweet?text=%23python%20%23dataextraction%20tool%20for%20%23googlestreetview%20images:%20https/github.com/rrwen/google_streetview
 
 Install
 -------
