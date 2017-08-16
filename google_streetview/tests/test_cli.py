@@ -60,7 +60,7 @@ class cliTest(TestCase):
     argv = [
       'cli.py',
       '--location=46.414382,10.013988',
-      '--save_links=' + self.tempfile
+      '--save_links=' + str(self.tempfile)
     ]
     run(argv)
   
@@ -68,7 +68,7 @@ class cliTest(TestCase):
     argv = [
       'cli.py',
       '--location=46.414382,10.013988',
-      '--save_metadata=' + self.tempfile
+      '--save_metadata=' + str(self.tempfile)
     ]
     run(argv)
   
@@ -76,7 +76,7 @@ class cliTest(TestCase):
     argv = [
       'cli.py',
       '--location=46.414382,10.013988',
-      '--save_downloads=' + self.tempdir
+      '--save_downloads=' + str(self.tempdir)
     ]
     run(argv)
     
