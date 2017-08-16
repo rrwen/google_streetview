@@ -3,7 +3,7 @@
 __name__ = 'google_streetview'
 __author__ = 'Richard Wen'
 __email__ = 'rrwen.dev@gmail.com'
-__version__ = '1.1.2'
+__version__ = '1.1.3'
 __license__ = 'MIT'
 __description__ = 'A command line tool and module for Google Street View Image API.'
 __keywords__ = [
