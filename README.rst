@@ -15,7 +15,7 @@ A command line tool and module for Google Street View Image API.
     :target: https://github.com/rrwen/google_streetview/issues
 .. image:: https://travis-ci.org/rrwen/google_streetview.svg?branch=master
     :target: https://travis-ci.org/rrwen/google_streetview
-.. image:: https://coveralls.io/repos/github/rrwen/google_streetview/badge.png?branch=master
+.. image:: https://coveralls.io/repos/github/rrwen/google_streetview/badge.svg?branch=master
     :target: https://coveralls.io/github/rrwen/google_streetview?branch=master
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
