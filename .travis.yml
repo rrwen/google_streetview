@@ -5,7 +5,8 @@ python:
 cache: pip
 install: 
   - pip install git+https://github.com/rrwen/google_streetview
+  - pip install coveralls
 script:
   - google_streetview -s key="AIzaSyDLzW6n52tcRTGboOOepiKelNVdLC9qSzA"
-  - python -m unittest
+  - coverage run --source=google_streetview -m unittest
   - google_streetview -d
