@@ -13,9 +13,9 @@ class cliTest(TestCase):
 
   def setUp(self):
     tempfile = TemporaryFile()
-    self.tempfile = tempfile.name
+    self.tempfile = str(tempfile.name)
     tempfile.close()
-    self.tempdir = TemporaryDirectory().name
+    self.tempdir = str(TemporaryDirectory().name)
     
   def test_search_location(self):
     argv = [
@@ -60,7 +60,7 @@ class cliTest(TestCase):
     argv = [
       'cli.py',
       '--location=46.414382,10.013988',
-      '--save_links=' + str(self.tempfile)
+      '--save_links=' + self.tempfile
     ]
     run(argv)
   
@@ -68,7 +68,7 @@ class cliTest(TestCase):
     argv = [
       'cli.py',
       '--location=46.414382,10.013988',
-      '--save_metadata=' + str(self.tempfile)
+      '--save_metadata=' + self.tempfile
     ]
     run(argv)
   
