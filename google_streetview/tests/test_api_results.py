@@ -25,9 +25,9 @@ class apiTest(TestCase):
     }]
     self.results = google_streetview.api.results(params)
     tempfile = TemporaryFile()
-    self.tempfile = tempfile.name
+    self.tempfile = str(tempfile.name)
     tempfile.close()
-    self.tempdir = TemporaryDirectory().name
+    self.tempdir = str(TemporaryDirectory().name)
   
   def test_preview(self):
     results = self.results
