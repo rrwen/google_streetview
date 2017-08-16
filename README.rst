@@ -9,6 +9,18 @@ google_streetview
 
 A command line tool and module for Google Street View Image API.
 
+.. image:: https://img.shields.io/github/issues/rrwen/google_streetview.svg
+    :target: https://github.com/rrwen/google_streetview/issues
+.. image:: https://img.shields.io/github/forks/rrwen/google_streetview.svg
+    :target: https://github.com/rrwen/google_streetview/network
+.. image:: https://img.shields.io/github/stars/rrwen/google_streetview.svg
+    :target: https://github.com/rrwen/google_streetview/stargazers
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+    :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
+.. image:: https://travis-ci.org/rrwen/google_streetview.svg?branch=master
+    :target: https://travis-ci.org/rrwen/google_streetview
+.. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
+    :target: https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D
 
 Install
 -------
