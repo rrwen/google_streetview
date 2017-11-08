@@ -85,6 +85,57 @@ Use as a Python module:
   
 For more usage details, see the `Documentation <https://rrwen.github.io/google_streetview>`_.
 
+Contributions
+-------------
+
+Report Contributions
+********************
+
+Reports for issues and suggestions can be made using the `issue submission <https://github.com/rrwen/google_streetview/issues>`_ interface.  
+  
+When possible, ensure that your submission is:
+
+* **Descriptive**: has informative title, explanations, and screenshots
+* **Specific**: has details of environment (such as operating system and hardware) and software used
+* **Reproducible**: has steps, code, and examples to reproduce the issue
+
+Code Contributions
+******************
+
+Code contributions are submitted via `pull requests <https://help.github.com/articles/about-pull-requests>`_:
+
+1. Ensure that you pass the `Tests`_
+2. Create a new `pull request <https://github.com/rrwen/search_google/pulls>`_
+3. Provide an explanation of the changes
+
+A template of the code contribution explanation is provided below:
+
+::
+
+    ## Purpose
+    
+    The purpose can mention goals that include fixes to bugs, addition of features, and other improvements, etc.
+    
+    ## Description
+    
+    The description is a short summary of the changes made such as improved speeds, implementation
+    
+    ## Changes
+    
+    The changes are a list of general edits made to the files and their respective components.
+    * `file_path1`:
+        * `function_module_etc`: changed loop to map
+        * `function_module_etc`: changed variable value
+    * `file_path2`:
+        * `function_module_etc`: changed loop to map
+        * `function_module_etc`: changed variable value
+    
+    ## Notes
+    
+    The notes provide any additional text that do not fit into the above sections.
+
+For more information, see `Developer Install`_ and `Implementation`_.
+
 Developer Notes
 ---------------
 
