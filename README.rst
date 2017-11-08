@@ -110,29 +110,30 @@ A template of the code contribution explanation is provided below:
 
 ::
 
-    ## Purpose
-    
-    The purpose can mention goals that include fixes to bugs, addition of features, and other improvements, etc.
-    
-    ## Description
-    
-    The description is a short summary of the changes made such as improved speeds, implementation
-    
-    ## Changes
-    
-    The changes are a list of general edits made to the files and their respective components.
-    * `file_path1`:
-        * `function_module_etc`: changed loop to map
-        * `function_module_etc`: changed variable value
-    * `file_path2`:
-        * `function_module_etc`: changed loop to map
-        * `function_module_etc`: changed variable value
-    
-    ## Notes
-    
-    The notes provide any additional text that do not fit into the above sections.
+  ## Purpose
 
-For more information, see `Developer Install`_ and `Implementation`_.
+  The purpose can mention goals that include fixes to bugs, addition of features, and other improvements, etc.
+
+  ## Description
+
+  The description is a short summary of the changes made such as improved speeds, implementation
+
+  ## Changes
+
+  The changes are a list of general edits made to the files and their respective components.
+  
+  * `file_path1`:
+    * `function_module_etc`: changed loop to map
+    * `function_module_etc`: changed variable value
+  * `file_path2`:
+    * `function_module_etc`: changed loop to map
+    * `function_module_etc`: changed variable value
+
+  ## Notes
+
+  The notes provide any additional text that do not fit into the above sections.
+
+  For more information, see `Developer Install`_ and `Implementation`_.
 
 Developer Notes
 ---------------
