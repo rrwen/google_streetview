@@ -132,6 +132,7 @@ A template of the code contribution explanation is provided below:
   ## Notes
 
   The notes provide any additional text that do not fit into the above sections.
+  
 
 For more information, see `Developer Install`_ and `Implementation`_.
 
@@ -220,4 +221,19 @@ Upload to PyPi
   sphinx-build -b html docs/source docs
   python setup.py sdist
   twine upload dist/*
+  
+Implementation
+**************
+
+The command line tool and module use query strings inside Uniform Resource Locators (URLs) that make requests to `Google Street View Image API <https://developers.google.com/maps/documentation/streetview>`_. The Python package `requests <https://pypi.python.org/pypi/requests>`_ were used to download the images from the URL requests from a dictionary passed to the ``google_streetview.api`` module.
+
+::
+  
+  Google Street View Image API
+               |
+  URL Request with query string
+               |
+      google_streetview.api
+               |
+            request
   
