@@ -133,7 +133,7 @@ A template of the code contribution explanation is provided below:
 
   The notes provide any additional text that do not fit into the above sections.
 
-  For more information, see `Developer Install`_ and `Implementation`_.
+For more information, see `Developer Install`_ and `Implementation`_.
 
 Developer Notes
 ---------------
