@@ -5,7 +5,6 @@ google_streetview
 | rrwen.dev@gmail.com
 
 * `Documentation <https://rrwen.github.io/google_streetview>`_
-* `PyPi Package <https://pypi.python.org/pypi/google_streetview>`_
 
 A command line tool and module for Google Street View Image API.
 
@@ -15,15 +14,15 @@ A command line tool and module for Google Street View Image API.
     :target: https://travis-ci.org/rrwen/google_streetview
 .. image:: https://coveralls.io/repos/github/rrwen/google_streetview/badge.svg?branch=master
     :target: https://coveralls.io/github/rrwen/google_streetview?branch=master
-.. image:: https://img.shields.io/github/issues/rrwen/google_streetview.svg
-    :target: https://github.com/rrwen/google_streetview/issues
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
 .. image:: https://img.shields.io/github/stars/rrwen/google_streetview.svg
     :target: https://github.com/rrwen/google_streetview/stargazers
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+    :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
 .. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
-    :target: https://twitter.com/intent/tweet?text=%23python%20%23dataextraction%20tool%20for%20%23googlestreetview%20images:%20https://github.com/rrwen/google_streetview
-
+    :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
+.. image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
+    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rrwen%2edev%40gmail%2ecom&lc=CA&item_name=Richard%20Wen%20%28Open%20Source%20Developer%29&item_number=rrwen%2edev%2edonations&no_note=0&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest
+	
 Install
 -------
 
@@ -225,15 +224,23 @@ Upload to PyPi
 Implementation
 **************
 
-The command line tool and module use query strings inside Uniform Resource Locators (URLs) that make requests to `Google Street View Image API <https://developers.google.com/maps/documentation/streetview>`_. The Python package `requests <https://pypi.python.org/pypi/requests>`_ were used to download the images from the URL requests from a dictionary passed to the ``google_streetview.api`` module.
+The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`_ uses the following components:
+
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+--+
+| Component                                                                                                         | Purpose                                                                 |  |
++===================================================================================================================+=========================================================================+==+
+| `Google Street View Image API <https://developers.google.com/maps/documentation/streetview>`_                     | API for Google Street View images                                       |  |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+--+
+| `google_streetview.api <https://github.com/rrwen/google_streetview/blob/master/google_streetview/api.py>`_        | Module for interfacing with Google Street View Image API using requests |  |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+--+
+| `requests <https://pypi.python.org/pypi/requests>`_                                                               | Download and get URLs from Google Street View Image API                 |  |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+--+
 
 ::
   
-  Google Street View Image API
+  Google Street View Image API     <-- API for Street View Images
                |
-  URL Request with query string
+      google_streetview.api        <-- URL Request with query string
                |
-      google_streetview.api
-               |
-            request
+            request                <-- Download URLs and images
   
