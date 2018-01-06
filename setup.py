@@ -6,7 +6,7 @@ import google_streetview as package
 
 def readme():
   with open('README.rst') as f:
-    return ''.join(f.readlines()[11:])
+    return ''.join(f.readlines()[10:])
         
 setup(
   name=package.__name__,
