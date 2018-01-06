@@ -18,8 +18,8 @@ A command line tool and module for Google Street View Image API.
 Install
 -------
 
-1. Install `Python <https://www.python.org/downloads/>`_
-2. Install `google_streetview <https://pypi.python.org/pypi/search-google>`_ via ``pip``
+1. Install `Python <https://www.python.org/downloads/>`__
+2. Install `google_streetview <https://pypi.python.org/pypi/google_streetview>`__ via ``pip``
 
 ::
   
@@ -28,8 +28,8 @@ Install
 Setup
 -----
 
-* A `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_ is required to use this package
-* A `Gmail <https://www.google.com/gmail>`_ account will also be required to create and access the developer key
+* A `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__ is required to use this package
+* A `Gmail <https://www.google.com/gmail>`__ account will also be required to create and access the developer key
 * When asked to sign in, use your Gmail account for access
 
 *Note: Instructions and links were written on June 06, 2017, and are subject to change depending on Google's website and API.*
@@ -37,10 +37,10 @@ Setup
 Google API
 **********
 
-An `API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_ for the `Google Application Programming Interface (API) <https://developers.google.com/api-client-library/python/>`_ can be setup with the following instructions:
+An `API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__ for the `Google Application Programming Interface (API) <https://developers.google.com/api-client-library/python/>`__ can be setup with the following instructions:
 
-1. Enable `Google Street View Image API <https://console.developers.google.com/apis/api/street-view-image-backend.googleapis.com>`_
-2. Go to `Google API Console Credentials <https://console.developers.google.com/apis/credentials>`_
+1. Enable `Google Street View Image API <https://console.developers.google.com/apis/api/street-view-image-backend.googleapis.com>`__
+2. Go to `Google API Console Credentials <https://console.developers.google.com/apis/credentials>`__
 3. Click **Create Credentials -> API Key**
 4. Set ``key`` by replacing "your_dev_key" with the **API Key**
 
@@ -200,7 +200,7 @@ After resetting defaults, the developer key will have to be set again::
 Additional Arguments
 ********************
 
-A number of optional arguments defined using ``--`` are not shown when using ``google_streetview -h``. These can be used with the same names as the paramters passed to `Google's Street View Image API <https://developers.google.com/maps/documentation/streetview/intro>`_::
+A number of optional arguments defined using ``--`` are not shown when using ``google_streetview -h``. These can be used with the same names as the paramters passed to `Google's Street View Image API <https://developers.google.com/maps/documentation/streetview/intro>`__::
 
   google_streetview -a
 
@@ -211,7 +211,7 @@ For example, the digital signature for billing can be set by argument ``signatur
 Module Import
 *************
 
-The `google_streetview <https://pypi.python.org/pypi/search-google>`_ package may also be used as a `Python module <https://docs.python.org/2/tutorial/modules.html>`_::
+The `google_streetview <https://pypi.python.org/pypi/search-google>`__ package may also be used as a `Python module <https://docs.python.org/2/tutorial/modules.html>`__::
   
   # Import google_streetview for the api module
   import google_streetview.api

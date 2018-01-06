@@ -4,7 +4,7 @@ google_streetview
 | Richard Wen
 | rrwen.dev@gmail.com
 
-* `Documentation <https://rrwen.github.io/google_streetview>`_
+* `Documentation <https://rrwen.github.io/google_streetview>`__
 
 A command line tool and module for Google Street View Image API.
 
@@ -22,12 +22,12 @@ A command line tool and module for Google Street View Image API.
     :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
 .. image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
     :target: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rrwen%2edev%40gmail%2ecom&lc=CA&item_name=Richard%20Wen%20%28Open%20Source%20Developer%29&item_number=rrwen%2edev%2edonations&no_note=0&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest
-	
+
 Install
 -------
 
 1. Install `Python <https://www.python.org/downloads/>`_
-2. Install `google_streetview <https://pypi.python.org/pypi/google-streetview>`_ via ``pip``
+2. Install `google_streetview <https://pypi.python.org/pypi/google-streetview>`__ via ``pip``
 
 ::
   
@@ -42,7 +42,7 @@ For help in the console::
   
   google_streetview -h
   
-Ensure that a `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_ is set::
+Ensure that a `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__ is set::
 
   google_streetview -s key="your_dev_key"
 
@@ -80,7 +80,7 @@ Use as a Python module:
   # Download images to directory 'downloads'
   results.download_links('downloads')
   
-For more usage details, see the `Documentation <https://rrwen.github.io/google_streetview>`_.
+For more usage details, see the `Documentation <https://rrwen.github.io/google_streetview>`__.
 
 Contributions
 -------------
@@ -147,7 +147,7 @@ Install the latest developer version with ``pip`` from github::
   
 Install from ``git`` cloned source:
 
-1. Ensure `git <https://git-scm.com/>`_ is installed
+1. Ensure `git <https://git-scm.com/>`__ is installed
 2. Clone into current path
 3. Install via ``pip``
 
@@ -163,7 +163,7 @@ Tests
 1. Clone into current path ``git clone https://github.com/rrwen/google_streetview``
 2. Enter into folder ``cd google_streetview``
 3. Ensure `unittest <https://docs.python.org/2.7/library/unittest.html>`_ is available
-4. Set your `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`_
+4. Set your `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__
 5. Run tests
 6. Reset config file to defaults
 7. Please note that this will use up 16 requests from your quota
@@ -178,7 +178,7 @@ Tests
 Documentation Maintenance
 *************************
 
-1. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`_ is installed ``pip install -U sphinx``
+1. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`__ is installed ``pip install -U sphinx``
 2. Update the documentation in ``docs/``
 
 ::
@@ -189,7 +189,7 @@ Documentation Maintenance
 Upload to github
 ****************
 
-1. Ensure `git <https://git-scm.com/>`_ is installed
+1. Ensure `git <https://git-scm.com/>`__ is installed
 2. Add all files and commit changes
 3. Push to github
 
@@ -203,7 +203,7 @@ Upload to PyPi
 **************
 
 1. Ensure `twine <https://pypi.python.org/pypi/twine>`_ is installed ``pip install twine``
-2. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`_ is installed ``pip install -U sphinx``
+2. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`__ is installed ``pip install -U sphinx``
 3. Run tests and check for OK status
 4. Delete ``dist`` directory
 5. Update the version ``google_streetview/__init__.py``
@@ -224,7 +224,7 @@ Upload to PyPi
 Implementation
 **************
 
-The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`_ uses the following components:
+The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`__ uses the following components:
 
 +-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+--+
 | Component                                                                                                         | Purpose                                                                 |  |
