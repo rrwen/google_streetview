@@ -18,10 +18,10 @@ A command line tool and module for Google Street View Image API.
     :target: https://github.com/rrwen/google_streetview/stargazers
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
+.. image:: https://img.shields.io/badge/-Donate-yellow.svg
+    :target: https://donorbox.org/rrwen
 .. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
     :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
-.. image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
-    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QUAR4T6TV4NC6
 
 Install
 -------
