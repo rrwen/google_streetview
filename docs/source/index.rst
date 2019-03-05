@@ -31,8 +31,9 @@ Setup
 * A `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__ is required to use this package
 * A `Gmail <https://www.google.com/gmail>`__ account will also be required to create and access the developer key
 * When asked to sign in, use your Gmail account for access
+* Please note that usage of the Google Street View API may require a `billing plan <https://developers.google.com/maps/documentation/streetview/usage-and-billing>`__
 
-*Note: Instructions and links were written on June 06, 2017, and are subject to change depending on Google's website and API.*
+*Note: Instructions and links were written on March 5, 2019, and are subject to change depending on Google's website and API.*
 
 Google API
 **********
