@@ -24,8 +24,9 @@ A command line tool and module for Google Street View Image API.
     :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NQNSAHK5X46D2
 .. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
     :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
-
-*Note: Google has changed their `StreetView API pricing plans <https://developers.google.com/maps/documentation/streetview/usage-and-billing>`__ and it seems it is no longer free (last checked on March 5, 2019)*
+| \
+|
+**Note**: Google has changed their `StreetView API pricing plans <https://developers.google.com/maps/documentation/streetview/usage-and-billing>`__ and it is no longer free (last checked on March 5, 2019).
 
 Install
 -------
