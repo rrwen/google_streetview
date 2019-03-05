@@ -20,6 +20,8 @@ A command line tool and module for Google Street View Image API.
     :target: https://raw.githubusercontent.com/rrwen/google_streetview/master/LICENSE
 .. image:: https://img.shields.io/badge/donate-Donarbox-yellow.svg
     :target: https://donorbox.org/rrwen
+.. image:: https://img.shields.io/badge/donate-PayPal-yellow.svg
+    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NQNSAHK5X46D2
 .. image:: https://img.shields.io/twitter/url/https/github.com/rrwen/google_streetview.svg?style=social
     :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
 
@@ -85,144 +87,13 @@ For more usage details, see the `Documentation <https://rrwen.github.io/google_s
 Contributions
 -------------
 
-Report Contributions
-********************
+1. Reports for issues and suggestions can be made using the `issue submission <https://github.com/rrwen/google_streetview/issues>`_
+2. Code contributions are submitted via `pull requests <https://github.com/rrwen/google_streetview/pulls>`_
 
-Reports for issues and suggestions can be made using the `issue submission <https://github.com/rrwen/google_streetview/issues>`_ interface.  
-  
-When possible, ensure that your submission is:
-
-* **Descriptive**: has informative title, explanations, and screenshots
-* **Specific**: has details of environment (such as operating system and hardware) and software used
-* **Reproducible**: has steps, code, and examples to reproduce the issue
-
-Code Contributions
-******************
-
-Code contributions are submitted via `pull requests <https://help.github.com/articles/about-pull-requests>`_:
-
-1. Ensure that you pass the `Tests`_
-2. Create a new `pull request <https://github.com/rrwen/search_google/pulls>`_
-3. Provide an explanation of the changes
-
-A template of the code contribution explanation is provided below:
-
-::
-
-  ## Purpose
-
-  The purpose can mention goals that include fixes to bugs, addition of features, and other improvements, etc.
-
-  ## Description
-
-  The description is a short summary of the changes made such as improved speeds, implementation
-
-  ## Changes
-
-  The changes are a list of general edits made to the files and their respective components.
-  
-  * `file_path1`:
-    * `function_module_etc`: changed loop to map
-    * `function_module_etc`: changed variable value
-  * `file_path2`:
-    * `function_module_etc`: changed loop to map
-    * `function_module_etc`: changed variable value
-
-  ## Notes
-
-  The notes provide any additional text that do not fit into the above sections.
-  
-
-For more information, see `Developer Install`_ and `Implementation`_.
-
-Developer Notes
----------------
-
-Developer Install
-*****************
-
-Install the latest developer version with ``pip`` from github::
-  
-  pip install git+https://github.com/rrwen/google_streetview
-  
-Install from ``git`` cloned source:
-
-1. Ensure `git <https://git-scm.com/>`__ is installed
-2. Clone into current path
-3. Install via ``pip``
-
-::
-
-  git clone https://github.com/rrwen/google_streetview
-  cd google_streetview
-  pip install . -I
-  
-Tests
-*****
-
-1. Clone into current path ``git clone https://github.com/rrwen/google_streetview``
-2. Enter into folder ``cd google_streetview``
-3. Ensure `unittest <https://docs.python.org/2.7/library/unittest.html>`_ is available
-4. Set your `Google API developer key <https://developers.google.com/api-client-library/python/auth/api-keys>`__
-5. Run tests
-6. Reset config file to defaults
-7. Please note that this will use up 16 requests from your quota
-
-::
-  
-  pip install . -I
-  python -m google_streetview -s key=your_dev_key
-  python -m unittest
-  python -m google_streetview -d
-
-Documentation Maintenance
-*************************
-
-1. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`__ is installed ``pip install -U sphinx``
-2. Update the documentation in ``docs/``
-
-::
-  
-  pip install . -I
-  sphinx-build -b html docs/source docs
-
-Upload to github
-****************
-
-1. Ensure `git <https://git-scm.com/>`__ is installed
-2. Add all files and commit changes
-3. Push to github
-
-::
-  
-  git add .
-  git commit -a -m "Generic update"
-  git push
-  
-Upload to PyPi
-**************
-
-1. Ensure `twine <https://pypi.python.org/pypi/twine>`_ is installed ``pip install twine``
-2. Ensure `sphinx <https://github.com/sphinx-doc/sphinx/>`__ is installed ``pip install -U sphinx``
-3. Run tests and check for OK status
-4. Delete ``dist`` directory
-5. Update the version ``google_streetview/__init__.py``
-6. Update the documentation in ``docs/``
-7. Create source distribution
-8. Upload to `PyPi <https://pypi.python.org/pypi>`_
-
-::
-  
-  pip install . -I
-  python -m google_streetview -s key=your_dev_key
-  python -m unittest
-  python -m google_streetview -d
-  sphinx-build -b html docs/source docs
-  python setup.py sdist
-  twine upload dist/*
+See `CONTRIBUTING.rst <https://github.com/rrwen/freeboard-leaflet-realtime/blob/master/CONTRIBUTING.rst>`_ for more details.
   
 Implementation
-**************
+--------------
 
 The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`__ uses the following components:
 
@@ -244,3 +115,4 @@ The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`
                |
             request                <-- Download URLs and images
   
+For more information, see `NOTES.rst <https://github.com/rrwen/freeboard-leaflet-realtime/blob/master/NOTES.rst>`_.
