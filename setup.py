@@ -5,7 +5,7 @@ from setuptools import setup
 import google_streetview as package
 
 def readme():
-  with open('README.rst') as f:
+  with open('README.md') as f:
     return ''.join(f.readlines())
         
 setup(
