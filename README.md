@@ -11,7 +11,7 @@ A command line tool and module for Google Street View Image API.
 [![pypi version](https://badge.fury.io/py/google-streetview.svg)](https://badge.fury.io/py/google-streetview)
 [![Build Status](https://travis-ci.org/rrwen/google_streetview.svg?branch=master)](https://travis-ci.org/rrwen/google_streetview)
 [![Coverage Status](https://coveralls.io/repos/github/rrwen/google_streetview/badge.svg?branch=master)](https://coveralls.io/github/rrwen/google_streetview?branch=master)
-[![npm](https://img.shields.io/npm/dt/express-mongodb-rest.svg)](https://www.npmjs.com/package/express-mongodb-rest)
+[![Stars](https://img.shields.io/github/stars/rrwen/google_streetview.svg)](https://github.com/google_streetview/stargazers)
 [![GitHub license](https://img.shields.io/github/license/rrwen/google_streetview.svg)](https://github.com/rrwen/google_streetview/blob/master/LICENSE)
 [![Donarbox Donate](https://img.shields.io/badge/donate-Donarbox-yellow.svg)](https://donorbox.org/rrwen)
 [![PayPal Donate](https://img.shields.io/badge/donate-PayPal-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NQNSAHK5X46D2)
