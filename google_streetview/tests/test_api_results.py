@@ -38,7 +38,7 @@ class apiTest(TestCase):
     self.results.download_links(self.tempdir)
     nfiles = len(listdir(self.tempdir))
     rmtree(self.tempdir)
-    self.assertTrue(nfiles == 2)
+    self.assertTrue(nfiles > 0)
   
   def test_metadata_status_ok(self):
     status = self.results.metadata[0]['status']
