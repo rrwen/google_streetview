@@ -25,4 +25,4 @@ Code contributions are submitted via `pull requests <https://help.github.com/art
 
 A template of a code contribution is provided in `PULL_REQUEST_TEMPLATE.md <https://github.com/rrwen/google_streetview/blob/master/PULL_REQUEST_TEMPLATE.md>`_.
 
-For more information, see `Developer Install`_ and `Implementation`_.
+For more information, see `Developer Install <https://github.com/rrwen/google_streetview/blob/master/NOTES.rst#developer-install>`_ and `Implementation <https://github.com/rrwen/google_streetview#implementation>`_.
