@@ -26,7 +26,7 @@ A command line tool and module for Google Street View Image API.
     :target: https://twitter.com/intent/tweet?text=A%20command%20line%20tool%20and%20module%20for%20Google%20Street%20View%20Image%20API:%20https://github.com/rrwen/google_streetview%20%23python%20%23pip
 | \
 |
-**Note**: Google changed their `StreetView API pricing plans <https://developers.google.com/maps/documentation/streetview/usage-and-billing>`__, which a billing plan may be required to use the API (checked March 5, 2019).
+**Note**: Google changed `StreetView API pricing <https://developers.google.com/maps/documentation/streetview/usage-and-billing>`__ and a billing plan may be required (checked March 5, 2019).
 
 Install
 -------
