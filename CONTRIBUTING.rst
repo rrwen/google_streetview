@@ -19,7 +19,7 @@ Code Contributions
 
 Code contributions are submitted via `pull requests <https://help.github.com/articles/about-pull-requests>`_:
 
-1. Ensure that you pass the `Tests`_
+1. Ensure that you pass the `Tests <https://github.com/rrwen/google_streetview/blob/master/NOTES.rst#tests>`_
 2. Create a new `pull request <https://github.com/rrwen/search_google/pulls>`_
 3. Provide an explanation of the changes
 
