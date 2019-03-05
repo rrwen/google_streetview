@@ -90,7 +90,7 @@ Contributions
 1. Reports for issues and suggestions can be made using the `issue submission <https://github.com/rrwen/google_streetview/issues>`_
 2. Code contributions are submitted via `pull requests <https://github.com/rrwen/google_streetview/pulls>`_
 
-See `CONTRIBUTING.rst <https://github.com/rrwen/freeboard-leaflet-realtime/blob/master/CONTRIBUTING.rst>`_ for more details.
+See `CONTRIBUTING.rst <https://github.com/rrwen/google_streetview/blob/master/CONTRIBUTING.rst>`_ for more details.
   
 Implementation
 --------------
@@ -115,4 +115,4 @@ The package `google_streetview <https://pypi.python.org/pypi/google-streetview>`
                |
             request                <-- Download URLs and images
   
-For more information, see `NOTES.rst <https://github.com/rrwen/freeboard-leaflet-realtime/blob/master/NOTES.rst>`_.
+For more information, see `NOTES.rst <https://github.com/rrwen/google_streetview/blob/master/NOTES.rst>`_.
