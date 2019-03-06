@@ -13,6 +13,7 @@ setup(
   version=package.__version__,
   description=package.__description__,
   long_description=readme(),
+  long_description_content_type=package.__long_description_content_type__,
   author=package.__author__,
   author_email=package.__email__,
   license=package.__license__,
