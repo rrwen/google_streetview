@@ -72,7 +72,7 @@ def api_list(apiargs):
   return(out)
 
 def download(url, file_path):
-  r = requests.get(url, stream=True)
+  r = requests.get(url, stream=True, timeout=30)
   if r.status_code == 200: # if request is successful
     with open(file_path, 'wb') as f:
       r.raw.decode_content = True
